@@ -1,6 +1,6 @@
 <?php 
 include("../views/templates/navbar.php");
-require_once ('../database/read.php');
+require_once ("../database/read.php");
 $products = GetProducts($conn);
 ?>
 <!DOCTYPE html>
@@ -25,17 +25,16 @@ $products = GetProducts($conn);
             <tbody>
                 <?php foreach ($products as $product): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($product['id']); ?></td>
-                    <td><?php echo htmlspecialchars($product['product']); ?></td>
-                    <td><?php echo htmlspecialchars($product['component']); ?></td>
-                    <td><?php echo htmlspecialchars($product['quantity']); ?></td>
+                    <td><?php echo htmlspecialchars($product["id"]); ?></td>
+                    <td><?php echo htmlspecialchars($product["product"]); ?></td>
+                    <td><?php echo htmlspecialchars($product["component"]); ?></td>
+                    <td><?php echo htmlspecialchars($product["quantity"]); ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
   </body>
   <footer>
   </footer>

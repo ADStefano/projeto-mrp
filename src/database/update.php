@@ -1,6 +1,6 @@
 <?php
 
-require_once ('../config/db.php');
+require_once ("../config/db.php");
 
 function UpdateProduct(PDO $conn, string $id, int $quantity){
 

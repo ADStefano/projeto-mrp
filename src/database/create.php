@@ -1,6 +1,6 @@
 <?php
 
-require_once ('../config/db.php');
+require_once ("../config/db.php");
 
 function CreateProduct(PDO $conn, string $product, string $component, int $quantity){
 

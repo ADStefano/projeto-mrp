@@ -1,9 +1,9 @@
 <?php
 
-$db_name = 'mrp';
-$db_host = 'localhost'; 
-$db_user = 'root';
-$db_pass = '';
+$db_name = "mrp";
+$db_host = "localhost"; 
+$db_user = "root";
+$db_pass = "";
 $dsn = "mysql:host=$db_host;dbname=$db_name";
 
 try {
