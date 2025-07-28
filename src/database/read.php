@@ -1,6 +1,6 @@
 <?php
 
-require_once ('../config/db.php');
+require_once ("../config/db.php");
 
 function GetProducts(PDO $conn){
 
@@ -28,7 +28,7 @@ function GetComponents(PDO $conn, string $product){
     try{
 
         $query = $conn->prepare(
-            "SELECT component, quantity FROM mrp_products WHERE product = ':product'"
+            "SELECT component, quantity FROM mrp_products WHERE product = :product"
         );
         $query->bindParam(":product", $product);
         $query->execute();

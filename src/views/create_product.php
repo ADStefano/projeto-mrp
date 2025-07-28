@@ -11,7 +11,7 @@
     <?php include("../views/templates/navbar.php"); ?>
     <div class="container mt-4">
         <div style="text-align: center;">
-            <form method="POST" action="../controllers/create_product.php">
+            <form id="create_product_form">
                 <input type="text" name="product" placeholder="Nome do produto" required>
                 <input type="text" name="component" placeholder="Nome do componente" required>
                 <input type="number" name="quantity" placeholder="Quantidade" min="0" required>
@@ -19,7 +19,7 @@
             </form>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="../assets/js/create_product.js"></script>
   </body>
   <footer>
   </footer>

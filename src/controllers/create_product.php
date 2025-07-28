@@ -1,12 +1,12 @@
 <?php
 
-require_once ('../database/create.php');
+require_once ("../database/create.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $product = $_POST['product'] ?? null;
-    $component = $_POST['component'] ?? null;
-    $quantity = $_POST['quantity'] ?? 0;
+    $product = $_POST["product"] ?? null;
+    $component = $_POST["component"] ?? null;
+    $quantity = $_POST["quantity"] ?? 0;
 
     if (!$product){
         echo "Produto é obrigatório";

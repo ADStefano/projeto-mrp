@@ -1,13 +1,12 @@
 <?php
 
-// header('Content-Type: application/json');
-require_once ('../database/update.php');
+require_once ("../database/update.php");
 
 // ALTERAR PARA PUT
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $id = $_POST['id'] ?? null;
-    $quantity = $_POST['quantity'] ?? null;
+    $id = $_POST["id"] ?? null;
+    $quantity = $_POST["quantity"] ?? null;
 
     if (!$id || !$quantity){
         echo "O produto é obrigatório";
