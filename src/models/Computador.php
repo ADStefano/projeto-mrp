@@ -43,7 +43,7 @@ class Computador{
         $memoria_ramToBuy = abs($this->memoria_ram - $memoria_ramNec);
         $memoria_ramToBuy = ($memoria_ramToBuy < $this->memoria_ram) ? 0 : $memoria_ramToBuy;
         $gabineteToBuy = abs($this->gabinete - $gabineteNec);
-        $rodaToBuy = ($gabineteToBuy < $this->gabinete) ? 0 : $gabineteToBuy;
+        $gabineteToBuy = ($gabineteToBuy < $this->gabinete) ? 0 : $gabineteToBuy;
         $placa_maeToBuy = abs($this->placa_mae - $placa_maeNec);
         $placa_maeToBuy = ($placa_maeToBuy < $this->placa_mae) ? 0 : $placa_maeToBuy;
 

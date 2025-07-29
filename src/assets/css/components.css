@@ -13,3 +13,13 @@
 .notification.error {
   background-color: #f44336;
 }
+
+ul {
+    text-align: center;
+    list-style-position: inside;
+}
+
+ol {
+    text-align: center;
+    list-style-position: inside;
+}

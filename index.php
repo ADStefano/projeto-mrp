@@ -14,21 +14,25 @@ require_once __DIR__ . '/vendor/autoload.php';
 <body>
     <?php include("../projeto-mrp/src/views/templates/navbar.php"); ?>
 </br>
-    <div class="container">
+    <div class="container mt-4">
         <div class="d-grid gap-2">
-          <a href="src/views/create_product_view.php" class="btn btn-primary text-center">Adicionar Produtos</a>
+          <a href="src/views/create_product_view.php" class="btn btn-primary">Adicionar Produtos</a>
         </div>
         </br>
         <div class="d-grid gap-2">
-          <a href="src/views/update_product_view.php" class="btn btn-primary text-center">Atualizar estoque</a>
+          <a href="src/views/update_product_view.php" class="btn btn-primary">Atualizar estoque</a>
         </div>
         </br>
         <div class="d-grid gap-2">
-          <a href="src/views/view_products_view.php" class="btn btn-primary text-center">Visualizar estoque</a>
+          <a href="src/views/view_products_view.php" class="btn btn-primary">Visualizar estoque</a>
         </div>
         </br>
         <div class="d-grid gap-2">
-          <a href="src/views/mrp_view.php" class="btn btn-primary text-center">Calcular MRP</a>
+          <a href="src/views/mrp_view.php" class="btn btn-primary">Calcular MRP</a>
+        </div>
+        </br>
+        <div class="d-grid gap-2">
+          <a href="src/views/delete_product_view.php" class="btn btn-danger"> Deletar componente</a>
         </div>
     </div>
 </body>
