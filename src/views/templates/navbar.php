@@ -1,7 +1,7 @@
-<nav style="background-color: #ff6800;"">
+<nav style="background-color: blue;"">
     <div class="container-md">
         <h4>
-            <a href="../../../index.php" style="color: gray;">HOME</a>
+            <a href="../../../index.php" style="color: white; text-decoration:none">HOME</a>
         </h4>
     </div>
 </nav>

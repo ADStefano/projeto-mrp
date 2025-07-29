@@ -1,7 +1,9 @@
 <?php
 
-require_once __DIR__ . "/../../repository/db.php";
-require_once __DIR__ . "/../../controllers/create_product_controller.php";
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+use App\controllers\CreateProduct;
+
 header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -10,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $component = (string) $_POST["component"] ?? null;
     $quantity = (int )$_POST["quantity"] ?? 0;
 
-    $create_product = new CreateProduct($conn, $product, $component, $quantity);
+    $create_product = new CreateProduct($product, $component, $quantity);
     $created_product = $create_product->Create();
 
     if (!$created_product["success"]){

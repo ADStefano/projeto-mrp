@@ -1,7 +1,9 @@
 <?php
 
-require_once __DIR__ . "/../../repository/db.php";
-require_once __DIR__ . "/../../controllers/update_product_controller.php";
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+use App\controllers\UpdateProduct;
+
 header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -9,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = (int) $_POST["id"] ?? null;
     $quantity = (int) $_POST["quantity"] ?? null;
 
-    $update_product = new UpdateProduct($conn, $id, $quantity);
+    $update_product = new UpdateProduct($id, $quantity);
     $updated_product = $update_product->Update();
 
     if (!$updated_product["success"]){

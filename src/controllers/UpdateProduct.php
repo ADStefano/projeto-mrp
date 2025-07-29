@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__ . "/../repository/db.php";
-require_once __DIR__ . "/../repository/product_repository.php";
+namespace App\controllers;
+use App\repository\ProductRepository;
+use Exception;
 
 class UpdateProduct{
 
@@ -9,10 +10,10 @@ class UpdateProduct{
     public $quantity;
     private $product_repository;
 
-    public function __construct(PDO $conn, int $id, int $quantity){
+    public function __construct(int $id, int $quantity){
         $this->id = $id;
         $this->quantity = $quantity;
-        $this->product_repository = new ProductRepository($conn);
+        $this->product_repository = new ProductRepository();
     }
 
     public function Update(){
@@ -25,7 +26,7 @@ class UpdateProduct{
         } else if ($this->quantity < 0){
             return [
                 "success" => false,
-                "message" => "Quantidade deve ser maior que zero"
+                "message" => "A quantidade deve ser maior que zero"
             ];
         }
 

@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . "/../repository/product_repository.php";
+namespace App\models;
+use App\repository\ProductRepository;
+
 
 class Bicicleta{
 
@@ -9,13 +11,13 @@ class Bicicleta{
     public $guidao = 0;
     private $product_repository;
 
-    public function __construct(PDO $conn){
-        $this->SetComponentsProperty($conn);
+    public function __construct(){
+        $this->SetComponentsProperty();
     }
 
     // Passa os dados do banco para as propriedades do objeto
-    private function SetComponentsProperty(PDO $conn){
-        $this->product_repository = new ProductRepository($conn);
+    private function SetComponentsProperty(){
+        $this->product_repository = new ProductRepository();
         $components = $this->product_repository->GetComponents("bicicleta");
         foreach ($components as $component){
             switch ($component["component"]) {
@@ -40,8 +42,11 @@ class Bicicleta{
         $guidaoNec = $numBicicletas;
 
         $rodaToBuy = abs($this->roda - $rodaNec);
+        $rodaToBuy = ($rodaToBuy < $this->roda) ? 0 : $rodaToBuy;
         $quadroToBuy = abs($this->quadro - $quadrosNec);
+        $quadroToBuy = ($quadroToBuy < $this->quadro) ? 0 : $quadroToBuy;
         $guidaoToBuy = abs($this->guidao - $guidaoNec);
+        $guidaoToBuy = ($guidaoToBuy < $this->guidao) ? 0 : $guidaoToBuy;
 
 
 

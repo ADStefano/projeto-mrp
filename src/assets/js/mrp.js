@@ -13,5 +13,6 @@ document.getElementById("mrp_calc_form").addEventListener("submit", function(e) 
   })
   .catch(err => {
     console.error("Erro:", err);
+    alert("Erro ao calcular MRP.");
   });
 });

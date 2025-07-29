@@ -13,10 +13,23 @@
     <div class="container mt-4">
         <div style="text-align: center;">
             <form id="create_product_form">
-                <input type="text" name="product" placeholder="Nome do produto" required>
-                <input type="text" name="component" placeholder="Nome do componente" required>
-                <input type="number" name="quantity" placeholder="Quantidade" min="0" required>
-                <button type="submit">Enviar</button>
+              <div class="form-group">
+                <label for="product"> Produto </label>
+                <input type="text" id="product" name="product" class="form-control" placeholder="Nome do produto" required>
+              </div>
+              </br>
+              <div class="form-group">
+                <label for="component"> Componente </label>
+                <input type="text" id="component" name="component" class="form-control" placeholder="Nome do componente" required>
+              </div>
+              </br>
+              <div class="form-group">
+                <label for="quantity"> Quantidade </label>
+                <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Quantidade" min="0" required>
+              </div>
+                <div class="form-text text-muted"> Em caso de componentes duplicados o valor será atualizado </div>
+                </br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
             <div id="notification"></div>
         </div>

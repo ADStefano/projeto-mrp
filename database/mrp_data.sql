@@ -6,7 +6,8 @@ INSERT INTO mrp_products(product, component, quantity) VALUES
 ("bicicleta","guidao", 0),
 ("computador", "gabinete", 0),
 ("computador","placa_mae", 0),
-("computador","memoria_ram", 0)
+("computador","memoria_ram", 0),
+("produto_teste", "componente_teste", 0)
 ON DUPLICATE KEY UPDATE
 quantity = VALUES(quantity);
 
