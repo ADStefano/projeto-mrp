@@ -1,12 +1,13 @@
 <?php
 
-require_once("../database/read.php");
+require_once __DIR__ . "/../repository/product_repository.php";
 
 class Bicicleta{
 
     public $roda = 0;
     public $quadro = 0;
     public $guidao = 0;
+    private $product_repository;
 
     public function __construct(PDO $conn){
         $this->SetComponentsProperty($conn);
@@ -14,7 +15,8 @@ class Bicicleta{
 
     // Passa os dados do banco para as propriedades do objeto
     private function SetComponentsProperty(PDO $conn){
-        $components = GetComponents($conn, "bicicleta");
+        $this->product_repository = new ProductRepository($conn);
+        $components = $this->product_repository->GetComponents("bicicleta");
         foreach ($components as $component){
             switch ($component["component"]) {
                 case "roda":

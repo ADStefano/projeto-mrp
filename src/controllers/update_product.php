@@ -1,26 +1,51 @@
 <?php
 
-require_once ("../database/update.php");
+require_once __DIR__ . "/../repository/db.php";
+require_once __DIR__ . "/../repository/product_repository.php";
 
-// ALTERAR PARA PUT
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+class UpdateProduct{
 
-    $id = $_POST["id"] ?? null;
-    $quantity = $_POST["quantity"] ?? null;
+    public $id;
+    public $quantity;
+    private $product_repository;
 
-    if (!$id || !$quantity){
-        echo "O produto é obrigatório";
-        exit;
-    } else if ($quantity < 0){
-        echo "Quantidade deve ser maior que zero";
-        exit;
+    public function __construct(PDO $conn, int $id, int $quantity){
+        $this->id = $id;
+        $this->quantity = $quantity;
+        $this->product_repository = new ProductRepository($conn);
     }
 
-    if ($id && $quantity){
-        $result = UpdateProduct($conn, $id, $quantity);
-        echo json_encode([
-            "message " => $result
-        ]);
+    public function Update(){
+        if (!$this->id){
+            return [
+                "success" => false,
+                "message" => "O produto é obrigatório"
+            ];
+
+        } else if ($this->quantity < 0){
+            return [
+                "success" => false,
+                "message" => "Quantidade deve ser maior que zero"
+            ];
+        }
+
+        try{
+
+            $result = $this->product_repository->UpdateProduct($this->id, $this->quantity);
+
+            return [
+                "success" => true,
+                "message" => $result
+            ];
+        }
+        catch (Exception $e){
+            return [
+                "success" => false,
+                "message" => "Erro ao atualizar produto: $this->id, Erro: ". $e->getMessage()
+            ];
+
+        }
     }
+    
 }
 ?>

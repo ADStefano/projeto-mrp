@@ -1,24 +1,24 @@
 import { showNotification } from "./utils.js";
 
-document.getElementById("create_product_form").addEventListener("submit", function(e) {
+document.getElementById("update_product_form").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const formData = new FormData(this);
 
-  fetch("../router/products/create_product.php", {
+  fetch("../router/products/update_product.php", {
     method: "POST",
     body: formData
   })
   .then(response => response.json())
   .then(data => {
     if (data.success) {
-      showNotification(data.message, 'success');
+        showNotification(data.message, 'success');
     } else {
-      showNotification(data.message, 'error');
+        showNotification(data.message, 'error');
     }
   })
   .catch(err => {
     console.error("Erro:", err);
-    alert("Erro ao inserir produto");
+    alert("Erro ao atualizar produto");
   });
 });
