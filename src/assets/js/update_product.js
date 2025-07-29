@@ -5,16 +5,16 @@ document.getElementById("update_product_form").addEventListener("submit", functi
 
   const formData = new FormData(this);
 
-  fetch("../router/products/update_product.php", {
+  fetch("../router/products/update_product_router.php", {
     method: "POST",
     body: formData
   })
   .then(response => response.json())
   .then(data => {
     if (data.success) {
-        showNotification(data.message, 'success');
+        showNotification(data.message, "success");
     } else {
-        showNotification(data.message, 'error');
+        showNotification(data.message, "error");
     }
   })
   .catch(err => {

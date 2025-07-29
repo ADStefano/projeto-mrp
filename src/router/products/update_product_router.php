@@ -1,8 +1,8 @@
 <?php
 
 require_once __DIR__ . "/../../repository/db.php";
-require_once __DIR__ . "/../../controllers/update_product.php";
-header('Content-Type: application/json');
+require_once __DIR__ . "/../../controllers/update_product_controller.php";
+header("Content-Type: application/json");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

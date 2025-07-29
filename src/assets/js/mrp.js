@@ -3,7 +3,7 @@ document.getElementById("mrp_calc_form").addEventListener("submit", function(e) 
 
   const formData = new FormData(this);
 
-  fetch("../router/mrp/mrp.php", {
+  fetch("../router/mrp/mrp_router.php", {
     method: "POST",
     body: formData
   })

@@ -15,16 +15,16 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="text-align: center;">
-                            <a href="src/views/create_product.php" class="btn" style="text-align: center;" > Adicionar Produtos </a>
+                            <a href="src/views/create_product_view.php" class="btn" style="text-align: center;" > Adicionar Produtos </a>
                     </div>
                     <div class="card-header" style="text-align: center;">
-                            <a href="src/views/update_product.php" class="btn" style="text-align: center;"> Atualizar estoque</a>
+                            <a href="src/views/update_product_view.php" class="btn" style="text-align: center;"> Atualizar estoque</a>
                     </div>
                     <div class="card-header" style="text-align: center;">
-                            <a href="src/views/view_products.php" class="btn" style="text-align: center;"> Visualizar estoque</a>
+                            <a href="src/views/view_products_view.php" class="btn" style="text-align: center;"> Visualizar estoque</a>
                     </div>
                     <div class="card-header" style="text-align: center;">
-                            <a href="src/views/mrp_calc.php" class="btn" style="text-align: center;"> Calcular MRP</a>
+                            <a href="src/views/mrp_view.php" class="btn" style="text-align: center;"> Calcular MRP</a>
                     </div>
                 </div>
             </div>
