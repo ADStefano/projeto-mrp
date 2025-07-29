@@ -2,9 +2,8 @@ document.getElementById("mrp_calc_form").addEventListener("submit", function(e) 
   e.preventDefault();
 
   const formData = new FormData(this);
-  console.log(formData)
 
-  fetch("../controllers/mrp_calc.php", {
+  fetch("../router/mrp/mrp.php", {
     method: "POST",
     body: formData
   })

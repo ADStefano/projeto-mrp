@@ -1,69 +1,73 @@
 
 <?php
 
-require_once("../models/bicicleta.php");
-require_once("../models/computador.php");
-require_once ("../config/db.php");
+require_once __DIR__ . "/../repository/db.php";
+require_once __DIR__ . "../../models/bicicleta.php";
+require_once __DIR__ . "../../models/computador.php";
 
-function CalculateMRP(PDO $conn, int $reqBic, int $reqPc){
+class MRP{
 
-    $bicicletas = new Bicicleta($conn);
-    $computadores = new Computador($conn);
+    public $reqBic;
+    public $reqPc;
+    public $bicicleta;
+    public $computador;
 
-    list($bicReq, $bicStock, $bicNeed) = $bicicletas->CalNumComponents($reqBic);
-    list($pcReq, $pcStock, $pcNeed) = $computadores->CalNumComponents($reqPc);
+    public function __construct(PDO $conn, int $reqBic, int $reqPc){
+        $this->reqBic = $reqBic;
+        $this->reqPc = $reqPc;
+        $this->bicicleta = new Bicicleta($conn);
+        $this->computador = new Computador($conn);
+    }
 
-    $tabela = "
-    <table>
-        <thead>
+    public function CalculateMRP(){
+
+        list($bicReq, $bicStock, $bicNeed) = $this->bicicleta->CalNumComponents($this->reqBic);
+        list($pcReq, $pcStock, $pcNeed) = $this->computador->CalNumComponents($this->reqPc);
+
+        $tabela = "
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Componente</th>
+                    <th>Necessário</th>
+                    <th>Em Estoque</th>
+                    <th>Faltando</th>
+                </tr>
+            </thead>
+            <tbody>
+        ";
+
+        //FIXME for pela len do array?
+        foreach ($bicReq as $bicComp => $qnt){
+
+            $tabela .= "
             <tr>
-                <th>Produto</th>
-                <th>Componente</th>
-                <th>Necessário</th>
-                <th>Em Estoque</th>
-                <th>Faltando</th>
+                <td> Bicicleta </td>
+                <td> $bicComp </td>
+                <td> $bicReq[$bicComp] </td>
+                <td> $bicStock[$bicComp] </td>
+                <td> $bicNeed[$bicComp] </td>
             </tr>
-        </thead>
-        <tbody>
-    ";
+            ";
+        }
 
-    foreach ($bicReq as $bicComp => $qnt){
+        foreach ($pcReq as $pcComp => $qnt){
+            $tabela .= "
+            <tr>
+                <td> Computador </td>
+                <td> $pcComp </td>
+                <td> $pcReq[$pcComp] </td>
+                <td> $pcStock[$pcComp] </td>
+                <td> $pcNeed[$pcComp] </td>
+            </tr>
+            ";
+        }
 
-        $tabela .= "
-        <tr>
-            <td> Bicicleta </td>
-            <td> $bicComp </td>
-            <td> $bicReq[$bicComp] </td>
-            <td> $bicStock[$bicComp] </td>
-            <td> $bicNeed[$bicComp] </td>
-        </tr>
-        ";
+        $tabela .= "</tbody></table>";
+
+        return $tabela;
     }
-
-    foreach ($pcReq as $pcComp => $qnt){
-        $tabela .= "
-        <tr>
-            <td> Computador </td>
-            <td> $pcComp </td>
-            <td> $pcReq[$pcComp] </td>
-            <td> $pcStock[$pcComp] </td>
-            <td> $pcNeed[$pcComp] </td>
-        </tr>
-        ";
-    }
-
-    $tabela .= "</tbody></table>";
-
-    return $tabela;
-
-
 }
-
-$quantities = $_POST['quantity'] ?? [];
-$reqBic = isset($quantities['bicicleta']) ? (int)$quantities['bicicleta'] : 0;
-$reqPc = isset($quantities['computador']) ? (int)$quantities['computador'] : 0;
-
-echo CalculateMRP($conn, $reqBic, $reqPc);
-
 ?>
 

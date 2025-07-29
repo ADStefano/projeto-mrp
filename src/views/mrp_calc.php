@@ -1,7 +1,9 @@
 <?php 
 include("../views/templates/navbar.php");
-require_once ("../database/read.php");
-$products = GetProducts($conn);
+require_once __DIR__ . "/../repository/db.php";
+require_once __DIR__ . "/../repository/product_repository.php";
+$product_repository = new ProductRepository($conn);
+$products = $product_repository->GetProducts($conn);
 $uniqueProducts = array_unique(array_column($products, "product"));
 ?>
 <!DOCTYPE html>
