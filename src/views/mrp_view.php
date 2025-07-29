@@ -28,7 +28,7 @@ $uniqueProducts = array_unique(array_column($products, "product"));
         </div>
         <div id="mrp-table"></div>
     </div>
-    <script src="../assets/js/mrp_calc.js"></script>
+    <script src="../assets/js/mrp.js"></script>
   </body>
   <footer>
   </footer>

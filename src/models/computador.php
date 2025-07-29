@@ -19,13 +19,13 @@ class Computador{
         $components = $this->product_repository->GetComponents("computador");
         foreach ($components as $component){
             switch ($component["component"]) {
-                case 'memoria_ram':
+                case "memoria_ram":
                     $this->memoria_ram = $component["quantity"];
                     break;
-                case 'gabinete':
+                case "gabinete":
                     $this->gabinete = $component["quantity"];
                     break;
-                case 'placa_mae':
+                case "placa_mae":
                     $this->placa_mae = $component["quantity"];
                     break;
             }
