@@ -22,6 +22,13 @@ class ProductRepositoryTest extends TestCase {
 
         $this->assertEquals("Produto atualizado com sucesso", $result);
     }
+
+    public function testDeleteProduct() {
+        $productRepository = new ProductRepository();
+        $result = $productRepository->DeleteProduct(1);
+
+        $this->assertEquals("Produto deletado com sucesso", $result);
+    }
 }
 
 

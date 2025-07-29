@@ -49,7 +49,7 @@ class CreateProduct{
         catch(Exception $e){
             return [
                 "success" => false,
-                "message" => "Erro ao salvar produto: $this->product, $this->component no banco: ". $e->getMessage()
+                "message" => "Erro ao salvar produto: $this->product, componente: $this->component no banco: ". $e->getMessage()
             ];
         }
     }

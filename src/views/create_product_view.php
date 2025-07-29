@@ -31,8 +31,9 @@
                 </br>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
-            <div id="notification"></div>
         </div>
+        </br>
+        <div id="notification"></div>
     </div>
     <script type="module" src="../assets/js/create_product.js"></script>
   </body>

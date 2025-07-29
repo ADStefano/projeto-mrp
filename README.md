@@ -168,7 +168,7 @@ projeto-mrp
 * src/repository: Contém as classes responsáveis por conectar e executar queries no banco de dados.
 * src/router: Roteiam as requisições e chamam os controllers.
 * src/tests: Contém os testes das classes e suas funções.
-* src/views: Contém a outra parte do frontend, arquivos html e templates html.
+* src/views: Contém a outra parte do frontend, arquivos e templates html/PHP.
 
 OBS: O vendor não está no github por ser muito extenso, e também o composer cria quando você instala.
 

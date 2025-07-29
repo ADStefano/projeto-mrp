@@ -87,5 +87,18 @@ class ProductRepository{
         return "Produto atualizado com sucesso";
 
     }
+
+    public function DeleteProduct(int $id){
+
+        $query = $this->conn->prepare(
+            "DELETE FROM mrp_products WHERE id = :id"
+        );
+
+        $query->bindParam(":id", $id, PDO::PARAM_INT);
+        $query->execute();
+
+        return "Produto deletado com sucesso";
+
+    }
 }
 ?>
