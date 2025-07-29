@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__ . "/../repository/db.php";
-require_once __DIR__ . "/../repository/product_repository.php";
+namespace App\controllers;
+use App\repository\ProductRepository;
+use Exception;
 
 class CreateProduct{
 
@@ -10,11 +11,11 @@ class CreateProduct{
     public $quantity;
     private $product_repository;
 
-    public function __construct(PDO $conn, string $product, string $component, int $quantity){
+    public function __construct(string $product, string $component, int $quantity){
         $this->product = $product;
         $this->component = $component;
         $this->quantity = $quantity;
-        $this->product_repository = new ProductRepository($conn);
+        $this->product_repository = new ProductRepository();
 
     }
 

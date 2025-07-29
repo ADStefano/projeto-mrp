@@ -1,11 +1,18 @@
 <?php 
 
+namespace App\repository;
+
+use PDO;
+use Exception;
+use App\repository\Database;
+
 class ProductRepository{
 
     private $conn;
 
-    public function __construct(PDO $conn){
-        $this->conn = $conn;
+    public function __construct(){
+        $db = new Database();
+        $this->conn = $db->Connect();
     }
 
     public function InsertProduct(string $product, string $component, int $quantity){
@@ -22,7 +29,7 @@ class ProductRepository{
         $query->bindParam(":quantity_update", $quantity, PDO::PARAM_INT);
         $query->execute();
 
-        return "Produto inserido com successo";
+        return "Produto inserido com sucesso";
 
     }
 
@@ -77,10 +84,8 @@ class ProductRepository{
         $query->bindParam(":quantity", $quantity, PDO::PARAM_INT);
         $query->execute();
 
-        return "Produto atualizado com successo";
+        return "Produto atualizado com sucesso";
 
     }
-
 }
-
 ?>

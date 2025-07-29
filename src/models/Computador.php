@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . "/../repository/product_repository.php";
+namespace App\models;
+use App\repository\ProductRepository;
 
 class Computador{
 
@@ -9,13 +10,13 @@ class Computador{
     public $placa_mae = 0;
     private $product_repository;
 
-    public function __construct(PDO $conn){
-        $this->SetComponentsProperty($conn);
+    public function __construct(){
+        $this->SetComponentsProperty();
     }
 
     // Passa os dados do banco para as propriedades do objeto
-    private function SetComponentsProperty(PDO $conn){
-        $this->product_repository = new ProductRepository($conn);
+    private function SetComponentsProperty(){
+        $this->product_repository = new ProductRepository();
         $components = $this->product_repository->GetComponents("computador");
         foreach ($components as $component){
             switch ($component["component"]) {
@@ -40,8 +41,11 @@ class Computador{
         $placa_maeNec = $numComputadores;
 
         $memoria_ramToBuy = abs($this->memoria_ram - $memoria_ramNec);
+        $memoria_ramToBuy = ($memoria_ramToBuy < $this->memoria_ram) ? 0 : $memoria_ramToBuy;
         $gabineteToBuy = abs($this->gabinete - $gabineteNec);
+        $rodaToBuy = ($gabineteToBuy < $this->gabinete) ? 0 : $gabineteToBuy;
         $placa_maeToBuy = abs($this->placa_mae - $placa_maeNec);
+        $placa_maeToBuy = ($placa_maeToBuy < $this->placa_mae) ? 0 : $placa_maeToBuy;
 
 
 
